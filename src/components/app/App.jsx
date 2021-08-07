@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import DetailPage from '../details/DetailPage';
+import ToppingDetails from '../details/ToppingDetails';
 import ToppingsList from '../toppings/ToppingsList';
 
 export default function App() {
@@ -8,7 +8,7 @@ export default function App() {
     <>
       <Switch>
         <Route exact path="/" component={ToppingsList}/>
-        <Route exact path="/topping/:id" component={DetailPage} />
+        <Route exact path="/topping/:id" component={ToppingDetails} />
       </Switch>
     </>
   );
