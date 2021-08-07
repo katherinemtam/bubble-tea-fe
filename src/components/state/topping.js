@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchToppings } from '../services/toppingsApi';
+import { fetchTopping, fetchToppings } from '../services/toppingsApi';
 
 export const useToppings =  () => {
   const [toppings, setToppings] = useState([]);
@@ -10,4 +10,15 @@ export const useToppings =  () => {
   }, []);
 
   return toppings;
+};
+
+export const useTopping = (id) => {
+  const [topping, setTopping] = useState({});
+
+  useEffect(() => {
+    fetchTopping(id)
+      .then(setTopping);
+  }, [id]);
+
+  return topping;
 };
