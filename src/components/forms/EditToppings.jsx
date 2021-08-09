@@ -4,34 +4,40 @@ import { useTopping } from '../state/topping';
 import { updateTopping } from '../services/toppingCRUD';
 import ToppingForm from './ToppingForm';
 import styles from './EditToppings.css';
-import { fetchTopping } from '../services/toppingsApi';
 
 const EditToppings = () => {
   const { id } = useParams();
   const history = useHistory();
+  console.log('id', id);
+  const { loading, topping } = useTopping(id);
+  console.log('hello', topping);
 
-  const fetchedTopping = useTopping(id);
-  console.log('fetched', fetchedTopping);
+  const [name, setName] = useState(topping.name);
+  const [description, setDescription] = useState(topping.description);
+  const [image, setImage] = useState(topping.image);
+  const [texture, setTexture] = useState(topping.texture);
+  const [hasDairy, setDairy] = useState(topping.hasDairy);
+  const [cost, setCost] = useState(topping.cost);
+  const [newTopping, setNewTopping] = useState({
+    id,
+    name, 
+    description, 
+    image, 
+    texture,
+    hasDairy, 
+    cost, 
+  });
 
-  const [name, setName] = useState(fetchedTopping.name);
-  const [description, setDescription] = useState(fetchedTopping.description);
-  const [image, setImage] = useState(fetchedTopping.image);
-  const [texture, setTexture] = useState(fetchedTopping.texture);
-  const [hasDairy, setDairy] = useState(fetchedTopping.hasDairy);
-  const [cost, setCost] = useState(fetchedTopping.cost);
-  const [topping, setTopping] = useState(
-    fetchedTopping
-    // {
-    //   id,
-    //   name, 
-    //   description, 
-    //   image, 
-    //   texture,
-    //   hasDairy, 
-    //   cost }
-  );
-
-  console.log('state', topping);
+  // {
+  //   id,
+  //   name: topping.name, 
+  //   description: topping.description, 
+  //   image: topping.image, 
+  //   texture: topping.texture,
+  //   hasDairy: topping.hasDairy, 
+  //   cost: topping.cost 
+  // }
+  console.log('state', newTopping);
 
   const handleChange = ({ target }) => {
     switch(target.name) {
@@ -67,11 +73,11 @@ const EditToppings = () => {
       texture,
       hasDairy, 
       cost });
-    setTopping(newTopping);
+    setNewTopping(newTopping);
 
     history.push(`/toppings/${newTopping.id}`);
   };
-
+  if(loading) return <h1>Loading...</h1>;
   return (
     <section className={styles.EditToppings}>
       <h1>Update Topping</h1>
