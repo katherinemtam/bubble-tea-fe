@@ -8,14 +8,13 @@ import styles from './ToppingDetails.css';
 const ToppingDetails = () => {
   const history = useHistory();
   const { id } = useParams();
-  let topping = useTopping(id);
+  let { loading, topping } = useTopping(id);
 
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   });
 
-  const texture = JSON.stringify(topping.texture);
   const hasDairy = JSON.stringify(topping.hasDairy);
   const cost = formatter.format(topping.cost);
 
@@ -35,7 +34,7 @@ const ToppingDetails = () => {
 
   };
 
-  if(!topping) return <h1>Loading...</h1>;
+  if(loading) return <h1>Loading...</h1>;
   return (
     <figure className={styles.ToppingDetails}>
       <h1>{topping.name}</h1>

@@ -16,11 +16,14 @@ export const useToppings =  () => {
 
 export const useTopping = (id) => {
   const [topping, setTopping] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetchTopping(id)
-      .then(setTopping);
+      .then(setTopping)
+      .then(() => setLoading(false));
   }, [id]);
 
-  return topping;
+  return { loading, topping };
 };
