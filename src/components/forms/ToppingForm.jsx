@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './ToppingForm.css';
 
-const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChange, onCheck, onSubmit }) => {
+const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChange, onSubmit }) => {
 
   return (
     <section className={styles.ToppingForm}>

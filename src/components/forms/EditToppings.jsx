@@ -14,7 +14,6 @@ const EditToppings = () => {
   const [newTopping, setNewTopping] = useState(null);
 
   useEffect(() => {
-    console.log(loading, topping);
     if(!loading) setNewTopping(topping);
   }, [topping, loading]);
 
@@ -24,12 +23,11 @@ const EditToppings = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('NEW', newTopping);
     await updateTopping({ id, ...newTopping });
 
     history.push(`/toppings/${id}`);
   };
-
+  
   if(loading && !newTopping) return <h1>Loading...</h1>;
   return (
     <section className={styles.EditToppings}>
