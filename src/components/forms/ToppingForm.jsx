@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './ToppingForm.css';
 
 const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChange, onCheck, onSubmit }) => {
+
   return (
     <section className={styles.ToppingForm}>
       <form onSubmit={onSubmit}>
@@ -54,7 +55,7 @@ const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChan
             name="dairy"
             type="checkbox"
             value={hasDairy}
-            onChange={onCheck}
+            onChange={({ target }) => onChange({ target: { value: target.checked } }) }
           /> Yes
         </label>
 
