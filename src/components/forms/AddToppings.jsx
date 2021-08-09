@@ -10,7 +10,7 @@ const AddTopping = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
-  const [texture, setTexture] = useState([]);
+  const [texture, setTexture] = useState('');
   const [hasDairy, setDairy] = useState(Boolean);
   const [cost, setCost] = useState('');
   const [topping, setTopping] = useState({});
