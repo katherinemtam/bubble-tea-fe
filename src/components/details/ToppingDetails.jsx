@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useTopping } from '../state/topping';
+import { Link } from 'react-router-dom';
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -27,6 +28,7 @@ const DetailPage = () => {
         <p>Has Dairy: {hasDairy}</p>
         <p>Cost: {cost}</p>
       </figcaption>
+      <Link to="/">Go Back Home</Link>
     </figure>
   );
 };
