@@ -41,7 +41,7 @@ const ToppingDetails = () => {
       <img src={topping.image} alt={topping.name}/>
       <figcaption>
         <p>Description: {topping.description}</p>
-        <p>Texture: {texture}</p>
+        <p>Texture: {topping.texture}</p>
         <p>Has Dairy: {hasDairy}</p>
         <p>Cost: {cost}</p>
       </figcaption>
