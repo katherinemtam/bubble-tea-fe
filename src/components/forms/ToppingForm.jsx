@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import styles from './ToppingForm.css';
 
-const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChange, onSubmit, onCheck }) => {
+const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChange, onCheck, onSubmit }) => {
   return (
-    <>
+    <section className={styles.ToppingForm}>
       <form onSubmit={onSubmit}>
         <label>
         Name:  
@@ -70,10 +71,12 @@ const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChan
           />
         </label>
       
-        <button>Create a New Topping!</button>
+        <div>
+          <button>Submit!</button>
+        </div>
       </form>
-      <Link to="/">Go Back Home</Link>
-    </>
+      <Link to="/toppings">Go Back to All Toppings</Link>
+    </section>
   );
 };
 
@@ -84,7 +87,8 @@ ToppingForm.propTypes = {
   texture: PropTypes.string, 
   hasDairy: PropTypes.bool, 
   cost: PropTypes.number,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
+  onCheck: PropTypes.func,
   onSubmit: PropTypes.func.isRequired,
 };
 

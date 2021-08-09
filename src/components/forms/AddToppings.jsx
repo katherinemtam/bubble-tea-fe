@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { addTopping } from '../services/toppingCRUD';
 import ToppingForm from './ToppingForm';
+import styles from './AddToppings.css';
 
 const AddTopping = () => {
   const history = useHistory();
@@ -54,10 +55,10 @@ const AddTopping = () => {
   };
 
   return (
-    <>
+    <section className={styles.AddToppings}>
       <h1>Add Topping</h1>
       <ToppingForm {...topping} onChange={handleChange} onSubmit={handleSubmit} onCheck={handleCheck}/>
-    </>
+    </section>
   );
 };
 

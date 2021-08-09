@@ -2,6 +2,7 @@ import React from 'react';
 import { useToppings } from '../state/topping';
 import { Link } from 'react-router-dom';
 import Topping from './Toppings';
+import styles from './ToppingsList.css';
 
 const ToppingsList = () => {
   const { loading, toppings } = useToppings();
@@ -16,11 +17,10 @@ const ToppingsList = () => {
 
   if(loading) return <h1>Loading...</h1>;
   return (
-    <>
-      <h1>Toppings</h1>
-      <Link to="/toppings/add">Add New Topping</Link>
+    <section className={styles.ToppingsList}>
+      <h1>All Toppings</h1>
       <ul>{toppingElements}</ul>
-    </>
+    </section>
   );
 };
 

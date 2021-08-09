@@ -3,8 +3,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useTopping } from '../state/topping';
 import { Link } from 'react-router-dom';
 import { deleteTopping } from '../services/toppingCRUD';
+import styles from './ToppingDetails.css';
 
-const DetailPage = () => {
+const ToppingDetails = () => {
   const history = useHistory();
   const { id } = useParams();
   let topping = useTopping(id);
@@ -36,7 +37,7 @@ const DetailPage = () => {
 
   if(!topping) return <h1>Loading...</h1>;
   return (
-    <figure>
+    <figure className={styles.ToppingDetails}>
       <h1>{topping.name}</h1>
       <img src={topping.image} alt={topping.name}/>
       <figcaption>
@@ -45,11 +46,13 @@ const DetailPage = () => {
         <p>Has Dairy: {hasDairy}</p>
         <p>Cost: {cost}</p>
       </figcaption>
-      <Link to ={`/toppings/${topping.id}/edit`}>Edit Topping</Link>
-      <button onClick={handleClick}>Delete Topping</button>
-      <Link to="/">Go Back Home</Link>
+      <nav>
+        <Link to ={`/toppings/${topping.id}/edit`}>Edit Topping</Link>
+        <button onClick={handleClick}>Delete Topping</button>
+        <Link to="/toppings">Go Back to All Toppings</Link>
+      </nav>
     </figure>
   );
 };
 
-export default DetailPage;
+export default ToppingDetails;
