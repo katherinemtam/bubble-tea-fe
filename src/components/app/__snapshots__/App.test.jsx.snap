@@ -2,8 +2,56 @@
 
 exports[`App component renders App 1`] = `
 <DocumentFragment>
-  <h1>
-    Hello World
-  </h1>
+  <header
+    class="Header"
+  >
+    <div>
+      <img
+        alt="logo"
+        src="bubble-logo-home.png"
+      />
+      <h1>
+        Bubble Tea Shop (Under Construction)
+      </h1>
+    </div>
+    <nav>
+      <a
+        aria-current="page"
+        class="active"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        href="/toppings"
+      >
+        All Toppings
+      </a>
+      <a
+        href="/toppings/add"
+      >
+        Add Topping
+      </a>
+    </nav>
+  </header>
+  <main
+    class="Home"
+  >
+    <h1>
+      Welcome to the Bubble Tea Shop
+    </h1>
+    <img
+      alt="logo"
+      src="bubble-tea-home.jpg"
+    />
+    <p>
+      While we're still under construction, checkout the toppings we'll be offering!
+    </p>
+    <a
+      href="/toppings"
+    >
+      Check out all the toppings!
+    </a>
+  </main>
 </DocumentFragment>
 `;
