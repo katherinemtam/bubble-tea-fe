@@ -5,7 +5,7 @@ import styles from './Header.css';
 const Header = () => {
   return <header className={styles.Header}>
     <div>
-      <img src="bubble-logo.png" alt="logo"/>
+      <img src="bubble-logo-home.png" alt="logo"/>
       <h1>Bubble Tea Shop (Under Construction)</h1>
     </div>
     <nav>
