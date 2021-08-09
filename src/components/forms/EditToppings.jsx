@@ -81,7 +81,7 @@ const EditToppings = () => {
   return (
     <section className={styles.EditToppings}>
       <h1>Update Topping</h1>
-      <ToppingForm {...topping} onChange={handleChange} onCheck={handleCheck} onSubmit={handleSubmit} />
+      <ToppingForm {...newTopping} onChange={handleChange} onCheck={handleCheck} onSubmit={handleSubmit} />
     </section>
   );
 };
