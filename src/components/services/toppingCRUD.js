@@ -5,6 +5,17 @@ export const addTopping = async (topping) => {
     body: JSON.stringify(topping)
   });
   const json = await res.json();
-  console.log(json);
+
+  return json;
+};
+
+export const updateTopping = async (topping) => {
+  const res = await fetch(`https://bubble-tea-be.herokuapp.com/api/v1/toppings/${topping.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(topping)
+  });
+  const json = await res.json();
+  
   return json;
 };
