@@ -19,3 +19,12 @@ export const updateTopping = async (topping) => {
   
   return json;
 };
+
+export const deleteTopping = async (id) => {
+  const res = await fetch(`https://bubble-tea-be.herokuapp.com/api/v1/toppings/${id}`, {
+    method: 'DELETE'
+  });
+  const json = await res.json();
+  
+  return json;
+};
