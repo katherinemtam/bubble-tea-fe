@@ -27,7 +27,7 @@ const ToppingDetails = () => {
     try {
       topping = null;
       await deleteTopping(id);
-      history.push('/');
+      history.push('/toppings');
     }
     catch(err) {
       console.log(err.message);
