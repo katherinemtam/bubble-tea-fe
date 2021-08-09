@@ -9,8 +9,8 @@ export default function App() {
     <>
       <Switch>
         <Route exact path="/" component={ToppingsList}/>
-        <Route exact path="/add" component={AddTopping}/>
-        <Route exact path="/topping/:id" component={ToppingDetails} />
+        <Route exact path="/toppings/add" component={AddTopping}/>
+        <Route exact path="/toppings/:id" component={ToppingDetails} />
       </Switch>
     </>
   );

@@ -9,7 +9,7 @@ const ToppingsList = () => {
 
   const toppingElements = toppings.map(topping => (
     <li key={topping.id}>
-      <Link to={`/topping/${topping.id}`}>
+      <Link to={`/toppings/${topping.id}`}>
         <Topping {...topping}/>
       </Link>
     </li>
