@@ -54,7 +54,10 @@ const AddTopping = () => {
   };
 
   return (
-    <ToppingForm {...topping} onChange={handleChange} onSubmit={handleSubmit} onCheck={handleCheck}/>
+    <>
+      <h1>Add Topping</h1>
+      <ToppingForm {...topping} onChange={handleChange} onSubmit={handleSubmit} onCheck={handleCheck}/>
+    </>
   );
 };
 
