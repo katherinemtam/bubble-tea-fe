@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { addTopping } from '../services/toppingCRUD';
+import ToppingForm from './ToppingForm';
 
 const AddTopping = () => {
   const history = useHistory();
@@ -9,8 +10,9 @@ const AddTopping = () => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
   const [texture, setTexture] = useState([]);
-  const [hasDairy, setDairy] = useState(true);
+  const [hasDairy, setDairy] = useState(Boolean);
   const [cost, setCost] = useState('');
+  const [topping, setTopping] = useState({});
 
   const handleChange = ({ target }) => {
     switch(target.name) {
@@ -26,20 +28,19 @@ const AddTopping = () => {
       case 'texture':
         setTexture(target.value);
         break;
-      case 'dairy':
-        setDairy(target.value);
-        break;
       case 'cost':
         setCost(target.value);
         break;
     }
   };
 
-  // const handleClick = ({});
+  const handleCheck = ({ target }) => {
+    setDairy(target.checked);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const newTopping = await addTopping({ 
       name, 
       description, 
@@ -47,71 +48,13 @@ const AddTopping = () => {
       texture,
       hasDairy, 
       cost });
-
+    
+    setTopping(newTopping);
     history.push(`/toppings/${newTopping.id}`);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:  
-        <input 
-          name="name"
-          value={name}
-          onChange={handleChange}
-        />
-      </label>
-
-      <label>
-        Description:
-        <input 
-          name="description"
-          value={description}
-          onChange={handleChange}
-        />
-      </label>
-
-      <label>
-        Image:
-        <input 
-          name="image"
-          value={image}
-          onChange={handleChange}
-        />
-      </label>
-
-      <label>
-        Texture:
-        <input 
-          name="texture"
-          value={texture}
-          placeholder='multiple format: "soft", "chewy"'
-          onChange={handleChange}
-        />
-      </label>
-
-      <label>
-        Does this contain dairy?
-        <input 
-          name="dairy"
-          type="checkbox"
-          value={hasDairy}
-          onChange={handleChange}
-        /> Yes
-      </label>
-
-      <label>
-        Cost:
-        <input 
-          name="cost"
-          value={cost}
-          placeholder="US currency, ex: 1.95"
-          onChange={handleChange}
-        />
-      </label>
-      
-      <button>Create a New Topping!</button>
-    </form>
+    <ToppingForm {...topping} onChange={handleChange} onSubmit={handleSubmit} onCheck={handleCheck}/>
   );
 };
 
