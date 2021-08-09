@@ -17,7 +17,7 @@ const ToppingsList = () => {
   return (
     <>
       <h1>Toppings</h1>
-      <Link to="/add">Add New Topping</Link>
+      <Link to="/toppings/add">Add New Topping</Link>
       <ul>{toppingElements}</ul>
     </>
   );
