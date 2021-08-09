@@ -1,0 +1,21 @@
+.ToppingForm{
+  border: 1px solid black;
+  width: 500px;
+  padding: 10px;
+  text-align: center;
+}
+
+.ToppingForm form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.ToppingForm button {
+  width: 200px;
+  margin: 5px;
+}
+
+.ToppingForm label {
+  margin: 5px;
+}

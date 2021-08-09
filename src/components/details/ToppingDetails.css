@@ -1,0 +1,23 @@
+.ToppingDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.ToppingDetails img {
+  height: 400px;
+
+}
+
+.ToppingDetails nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+
+  text-align: center;
+}

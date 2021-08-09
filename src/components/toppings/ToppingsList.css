@@ -1,0 +1,30 @@
+.ToppingsList {
+  text-align: center;
+}
+
+.ToppingsList ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  list-style: none;
+}
+
+.ToppingsList li {
+  margin: 10px;
+  padding: 50px;
+  width: 10rem;
+
+  border: 1px black solid;
+  border-radius: 20px;
+  
+  text-align: center;
+}
+
+.ToppingsList img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
