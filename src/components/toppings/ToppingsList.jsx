@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import Topping from './Toppings';
 
 const ToppingsList = () => {
-  const toppings = useToppings();
-  console.log(toppings);
+  const { loading, toppings } = useToppings();
 
   const toppingElements = toppings.map(topping => (
     <li key={topping.id}>
@@ -14,6 +13,8 @@ const ToppingsList = () => {
       </Link>
     </li>
   ));
+
+  if(loading) return <h1>Loading...</h1>;
   return (
     <>
       <h1>Toppings</h1>

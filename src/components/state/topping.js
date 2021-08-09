@@ -3,13 +3,15 @@ import { fetchTopping, fetchToppings } from '../services/toppingsApi';
 
 export const useToppings =  () => {
   const [toppings, setToppings] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchToppings()
-      .then(setToppings);
+      .then(setToppings)
+      .then(setLoading(false));
   }, []);
 
-  return toppings;
+  return { loading, toppings };
 };
 
 export const useTopping = (id) => {
