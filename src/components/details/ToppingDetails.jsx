@@ -2,11 +2,12 @@ import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useTopping } from '../state/topping';
 import { Link } from 'react-router-dom';
+import { deleteTopping } from '../services/toppingCRUD';
 
 const DetailPage = () => {
   const history = useHistory();
   const { id } = useParams();
-  const topping = useTopping(id);
+  let topping = useTopping(id);
 
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -16,6 +17,22 @@ const DetailPage = () => {
   const texture = JSON.stringify(topping.texture);
   const hasDairy = JSON.stringify(topping.hasDairy);
   const cost = formatter.format(topping.cost);
+
+  const handleClick = async () => {
+    const confirmation = 'Do you really want to delete this topping?';
+    
+    if(!window.confirm(confirmation)) return;
+
+    try {
+      topping = null;
+      await deleteTopping(id);
+      history.push('/');
+    }
+    catch(err) {
+      console.log(err.message);
+    }
+
+  };
 
   if(!topping) return <h1>Loading...</h1>;
   return (
@@ -29,6 +46,7 @@ const DetailPage = () => {
         <p>Cost: {cost}</p>
       </figcaption>
       <Link to ={`/toppings/${topping.id}/edit`}>Edit Topping</Link>
+      <button onClick={handleClick}>Delete Topping</button>
       <Link to="/">Go Back Home</Link>
     </figure>
   );
