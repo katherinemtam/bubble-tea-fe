@@ -6,12 +6,13 @@ import styles from './AddToppings.css';
 
 const AddTopping = () => {
   const history = useHistory();
+  const [loading, setLoading] = useState(null);
       
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
   const [texture, setTexture] = useState('');
-  const [hasDairy, setDairy] = useState(Boolean);
+  const [hasDairy, setDairy] = useState(true);
   const [cost, setCost] = useState('');
   const [topping, setTopping] = useState({});
 
@@ -29,19 +30,19 @@ const AddTopping = () => {
       case 'texture':
         setTexture(target.value);
         break;
+      case 'dairy':
+        setDairy(target.value);
+        break;
       case 'cost':
         setCost(target.value);
         break;
     }
   };
 
-  const handleCheck = ({ target }) => {
-    setDairy(target.checked);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
     const newTopping = await addTopping({ 
       name, 
       description, 
@@ -51,13 +52,15 @@ const AddTopping = () => {
       cost });
     
     setTopping(newTopping);
+    setLoading(false);
     history.push(`/toppings/${newTopping.id}`);
   };
 
+  if(loading) return <h1>Loading...</h1>;
   return (
     <section className={styles.AddToppings}>
       <h1>Add Topping</h1>
-      <ToppingForm {...topping} onChange={handleChange} onSubmit={handleSubmit} onCheck={handleCheck}/>
+      <ToppingForm {...topping} onChange={handleChange} onSubmit={handleSubmit}/>
     </section>
   );
 };

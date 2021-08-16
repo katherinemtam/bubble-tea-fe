@@ -14,9 +14,12 @@ const EditToppings = () => {
   const [newTopping, setNewTopping] = useState(null);
 
   useEffect(() => {
-    console.log(loading, topping);
     if(!loading) setNewTopping(topping);
   }, [topping, loading]);
+
+  const handleCheck = ({ target }) => {
+    setNewTopping(prevTopping => ({ ...prevTopping, [target.name]:target.checked }));
+  };
 
   const handleChange = ({ target }) => {
     setNewTopping(prevTopping => ({ ...prevTopping, [target.name]:target.value }));
@@ -24,17 +27,16 @@ const EditToppings = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('NEW', newTopping);
     await updateTopping({ id, ...newTopping });
 
     history.push(`/toppings/${id}`);
   };
-
+  
   if(loading && !newTopping) return <h1>Loading...</h1>;
   return (
     <section className={styles.EditToppings}>
       <h1>Update Topping</h1>
-      <ToppingForm {...newTopping} onChange={handleChange} onSubmit={handleSubmit} />
+      <ToppingForm {...newTopping} onChange={handleChange} onSubmit={handleSubmit} onCheck={handleCheck}/>
     </section>
   );
 };
