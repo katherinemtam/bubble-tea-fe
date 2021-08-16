@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './ToppingForm.css';
 
-const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChange, onSubmit }) => {
+const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChange, onSubmit, onCheck }) => {
 
   return (
     <section className={styles.ToppingForm}>
@@ -52,10 +52,10 @@ const ToppingForm = ({ name, description, image, texture, hasDairy, cost, onChan
         <label>
         Does this contain dairy?
           <input 
-            name="dairy"
+            checked={hasDairy}
+            name="hasDairy"
             type="checkbox"
-            value={hasDairy}
-            onChange={({ target }) => onChange({ target: { value: target.checked } }) }
+            onChange={onCheck}
           /> Yes
         </label>
 

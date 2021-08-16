@@ -17,6 +17,10 @@ const EditToppings = () => {
     if(!loading) setNewTopping(topping);
   }, [topping, loading]);
 
+  const handleCheck = ({ target }) => {
+    setNewTopping(prevTopping => ({ ...prevTopping, [target.name]:target.checked }));
+  };
+
   const handleChange = ({ target }) => {
     setNewTopping(prevTopping => ({ ...prevTopping, [target.name]:target.value }));
   };
@@ -32,7 +36,7 @@ const EditToppings = () => {
   return (
     <section className={styles.EditToppings}>
       <h1>Update Topping</h1>
-      <ToppingForm {...newTopping} onChange={handleChange} onSubmit={handleSubmit} />
+      <ToppingForm {...newTopping} onChange={handleChange} onSubmit={handleSubmit} onCheck={handleCheck}/>
     </section>
   );
 };
